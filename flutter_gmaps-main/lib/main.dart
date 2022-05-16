@@ -38,27 +38,6 @@ class _MapScreenState extends State<MapScreen> {
   Marker _destination;
   Directions _info;
 
-  void directions() {
-    DirectionsService.init('AIzaSyCnO0NrV6n2eRQ9CecYtBQAiNQUhD9olUc');
-
-    final directionsService = DirectionsService();
-
-    final request = DirectionsRequest(
-      origin: _origin,
-      destination: _destination,
-      travelMode: TravelMode.driving,
-    );
-
-    directionsService.route(request,
-        (DirectionsResult response, DirectionsStatus status) {
-      if (status == DirectionsStatus.ok) {
-        Text("Hurray");
-      } else {
-        // do something with error response
-      }
-    });
-  }
-
   @override
   void dispose() {
     _googleMapController.dispose();
@@ -161,11 +140,6 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
             ),
-          ElevatedButton(
-              onPressed: () {
-                directions();
-              },
-              child: Text("Directions"))
         ],
       ),
       floatingActionButton: FloatingActionButton(
